@@ -13,12 +13,12 @@ class ViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var basicCard: UIView!
     
-    var cardOfCenter:CGPoint!
+    var centerOfCard:CGPoint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        cardOfCenter = basicCard.center
+        centerOfCard = basicCard.center
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +29,9 @@ class ViewController: UIViewController {
     // MARK: methods
     @IBAction func swipeCard(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
+        let point = sender.translation(in: view)
+        
+        card.center = CGPoint(x: card.center.x + point.x, y: card.center.y + point.y)
     }
     
 }
