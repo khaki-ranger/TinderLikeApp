@@ -37,9 +37,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="basicCard" destination="oa9-Kf-56k" id="e6Q-qn-tJV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="0Yz-3r-Wga"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="0Yz-3r-Wga">
+                    <connections>
+                        <action selector="swipeCard:" destination="BYZ-38-t0r" id="cle-H4-1j0"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
