@@ -35,6 +35,26 @@ class ViewController: UIViewController {
         
         // スワイプを終了（指を離した）時の処理
         if sender.state == UIGestureRecognizerState.ended {
+            // 左に大きくスワイプした場合の処理
+            // カードの中心のx座標が画面の左端付近を超えた場合
+            // 画面の左外側に移動させる
+            if card.center.x < 75 {
+                UIView.animate(withDuration: 0.2, animations: {
+                    card.center = CGPoint(x: card.center.x - 250, y: card.center.y)
+                })
+                // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
+                return
+            // 右に大きくスワイプした場合の処理
+            // カードの中心のx座標が画面の右端付近を超えた場合
+            // 画面の右外側に移動させる
+            } else if card.center.x > self.view.frame.width - 75 {
+                UIView.animate(withDuration: 0.2, animations: {
+                    card.center = CGPoint(x: card.center.x + 250, y: card.center.y)
+                })
+                // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
+                return
+            }
+            
             // アニメーションさせる
             // 処理内容はクロージャーで記述する
             UIView.animate(withDuration: 0.2, animations: {
