@@ -32,6 +32,16 @@ class ViewController: UIViewController {
         let point = sender.translation(in: view)
         
         card.center = CGPoint(x: card.center.x + point.x, y: card.center.y + point.y)
+        
+        // スワイプを終了（指を離した）時の処理
+        if sender.state == UIGestureRecognizerState.ended {
+            // アニメーションさせる
+            // 処理内容はクロージャーで記述する
+            UIView.animate(withDuration: 0.2, animations: {
+                // カードの位置を初期値に戻す
+                card.center = self.centerOfCard
+            })
+        }
     }
     
 }
