@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     // MARK: Properties
     @IBOutlet weak var basicCard: UIView!
+    @IBOutlet weak var likeImageView: UIImageView!
     
     var centerOfCard:CGPoint!
 
@@ -40,6 +41,17 @@ class ViewController: UIViewController {
         // 度数をラジアンに変換するために、最大角度45度のラジアン、0.785を掛ける
         card.transform = CGAffineTransform(rotationAngle: xFromCenter / (view.frame.width / 2) * -0.785)
         
+        // BadもしくはGoodの画像を表示させるための処理
+        if xFromCenter > 0 {
+            likeImageView.image = #imageLiteral(resourceName: "good")
+            likeImageView.alpha = 1
+            likeImageView.tintColor = UIColor.red
+        } else if xFromCenter < 0 {
+            likeImageView.image = #imageLiteral(resourceName: "bad")
+            likeImageView.alpha = 1
+            likeImageView.tintColor = UIColor.blue
+        }
+        
         // スワイプを終了（指を離した）時の処理
         if sender.state == UIGestureRecognizerState.ended {
             // 左に大きくスワイプした場合の処理
@@ -62,7 +74,7 @@ class ViewController: UIViewController {
                 return
             }
             
-            // カードを初期値に戻すための処理
+            // 初期値に戻すための処理
             // アニメーションさせる
             // 処理内容はクロージャーで記述する
             UIView.animate(withDuration: 0.2, animations: {
@@ -71,6 +83,7 @@ class ViewController: UIViewController {
                 // 角度を戻す
                 card.transform = .identity
             })
+            likeImageView.alpha = 0
         }
     }
     
