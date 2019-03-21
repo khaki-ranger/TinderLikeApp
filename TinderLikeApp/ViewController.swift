@@ -33,6 +33,13 @@ class ViewController: UIViewController {
         
         card.center = CGPoint(x: card.center.x + point.x, y: card.center.y + point.y)
         
+        // スワイプによってカードの傾きを変えるための処理
+        // 画面の中心のx座標と、カードの中心のx座標の差分
+        let xFromCenter = card.center.x - view.center.x
+        // x座標の差分と画面半分の長さで割ることで、距離を0から1の間に収める
+        // 度数をラジアンに変換するために、最大角度45度のラジアン、0.785を掛ける
+        card.transform = CGAffineTransform(rotationAngle: xFromCenter / (view.frame.width / 2) * -0.785)
+        
         // スワイプを終了（指を離した）時の処理
         if sender.state == UIGestureRecognizerState.ended {
             // 左に大きくスワイプした場合の処理
@@ -55,11 +62,14 @@ class ViewController: UIViewController {
                 return
             }
             
+            // カードを初期値に戻すための処理
             // アニメーションさせる
             // 処理内容はクロージャーで記述する
             UIView.animate(withDuration: 0.2, animations: {
-                // カードの位置を初期値に戻す
+                // 位置を戻す
                 card.center = self.centerOfCard
+                // 角度を戻す
+                card.transform = .identity
             })
         }
     }
