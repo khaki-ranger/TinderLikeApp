@@ -18,21 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oa9-Kf-56k" userLabel="basicCard">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="444"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="good" translatesAutoresizingMaskIntoConstraints="NO" id="XrB-A3-Xz4">
-                                        <rect key="frame" x="123" y="183" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="0Yz-3r-Wga" appends="YES" id="Lkw-zs-SWq"/>
-                                </connections>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ui-wZ-f8n" userLabel="person4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="444"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -161,6 +146,21 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oa9-Kf-56k" userLabel="basicCard">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="444"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="good" translatesAutoresizingMaskIntoConstraints="NO" id="XrB-A3-Xz4">
+                                        <rect key="frame" x="123" y="183" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0Yz-3r-Wga" appends="YES" id="Lkw-zs-SWq"/>
+                                </connections>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJo-Ym-uzn">
                                 <rect key="frame" x="62" y="504" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -180,6 +180,10 @@
                     <connections>
                         <outlet property="basicCard" destination="oa9-Kf-56k" id="e6Q-qn-tJV"/>
                         <outlet property="likeImageView" destination="XrB-A3-Xz4" id="o6A-Dt-Fyg"/>
+                        <outlet property="person1" destination="D2j-0e-43Y" id="CSg-be-tDk"/>
+                        <outlet property="person2" destination="Klo-Hh-eqg" id="6qq-CE-Xv0"/>
+                        <outlet property="person3" destination="klh-Aj-Ogh" id="NAC-JR-afd"/>
+                        <outlet property="person4" destination="5Ui-wZ-f8n" id="sZk-3z-YJq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

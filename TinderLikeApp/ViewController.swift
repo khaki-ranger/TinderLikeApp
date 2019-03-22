@@ -14,7 +14,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var basicCard: UIView!
     @IBOutlet weak var likeImageView: UIImageView!
     
+    @IBOutlet weak var person1: UIView!
+    @IBOutlet weak var person2: UIView!
+    @IBOutlet weak var person3: UIView!
+    @IBOutlet weak var person4: UIView!
+    
     var centerOfCard:CGPoint!
+    // 実際に表示されるカードを格納する配列
+    var people = [UIView]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
