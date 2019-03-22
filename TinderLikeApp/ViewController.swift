@@ -39,6 +39,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func resetCard() {
+        // 位置を戻す
+        basicCard.center = self.centerOfCard
+        // 角度を戻す
+        basicCard.transform = .identity
+    }
 
     // MARK: methods
     @IBAction func swipeCard(_ sender: UIPanGestureRecognizer) {
@@ -76,7 +83,8 @@ class ViewController: UIViewController {
             // 画面の左外側に移動させる
             if card.center.x < 75 {
                 UIView.animate(withDuration: 0.2, animations: {
-                    card.center = CGPoint(x: card.center.x - 250, y: card.center.y)
+                    self.resetCard()
+                    self.people[self.selectedCardCount].center = CGPoint(x: self.people[self.selectedCardCount].center.x - 250, y: self.people[self.selectedCardCount].center.y)
                 })
                 // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
                 return
@@ -85,7 +93,8 @@ class ViewController: UIViewController {
             // 画面の右外側に移動させる
             } else if card.center.x > self.view.frame.width - 75 {
                 UIView.animate(withDuration: 0.2, animations: {
-                    card.center = CGPoint(x: card.center.x + 250, y: card.center.y)
+                    self.resetCard()
+                    self.people[self.selectedCardCount].center = CGPoint(x: self.people[self.selectedCardCount].center.x + 250, y: self.people[self.selectedCardCount].center.y)
                 })
                 // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
                 return
@@ -95,10 +104,9 @@ class ViewController: UIViewController {
             // アニメーションさせる
             // 処理内容はクロージャーで記述する
             UIView.animate(withDuration: 0.2, animations: {
-                // 位置を戻す
-                card.center = self.centerOfCard
-                // 角度を戻す
-                card.transform = .identity
+                self.resetCard()
+                self.people[self.selectedCardCount].center = self.centerOfCard
+                self.people[self.selectedCardCount].transform = .identity
             })
             likeImageView.alpha = 0
         }
