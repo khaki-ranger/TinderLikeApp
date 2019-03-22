@@ -22,11 +22,17 @@ class ViewController: UIViewController {
     var centerOfCard:CGPoint!
     // 実際に表示されるカードを格納する配列
     var people = [UIView]()
+    // ベースに関連づけるカードを制御するための変数
+    var selectedCardCount: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         centerOfCard = basicCard.center
+        people.append(person1)
+        people.append(person2)
+        people.append(person3)
+        people.append(person4)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +46,8 @@ class ViewController: UIViewController {
         let point = sender.translation(in: view)
         
         card.center = CGPoint(x: card.center.x + point.x, y: card.center.y + point.y)
+        // カードの位置をベースと同期させる
+        people[selectedCardCount].center = CGPoint(x: card.center.x + point.x, y: card.center.y + point.y)
         
         // スワイプによってカードの傾きを変えるための処理
         // 画面の中心のx座標と、カードの中心のx座標の差分
@@ -47,6 +55,8 @@ class ViewController: UIViewController {
         // x座標の差分と画面半分の長さで割ることで、距離を0から1の間に収める
         // 度数をラジアンに変換するために、最大角度45度のラジアン、0.785を掛ける
         card.transform = CGAffineTransform(rotationAngle: xFromCenter / (view.frame.width / 2) * -0.785)
+        // カードの角度をベースと同期させる
+        people[selectedCardCount].transform = CGAffineTransform(rotationAngle: xFromCenter / (view.frame.width / 2) * -0.785)
         
         // BadもしくはGoodの画像を表示させるための処理
         if xFromCenter > 0 {
