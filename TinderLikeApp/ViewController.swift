@@ -86,6 +86,9 @@ class ViewController: UIViewController {
                     self.resetCard()
                     self.people[self.selectedCardCount].center = CGPoint(x: self.people[self.selectedCardCount].center.x - 250, y: self.people[self.selectedCardCount].center.y)
                 })
+                likeImageView.alpha = 0
+                // カードの中身を変更するための処理
+                selectedCardCount += 1
                 // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
                 return
             // 右に大きくスワイプした場合の処理
@@ -96,6 +99,9 @@ class ViewController: UIViewController {
                     self.resetCard()
                     self.people[self.selectedCardCount].center = CGPoint(x: self.people[self.selectedCardCount].center.x + 250, y: self.people[self.selectedCardCount].center.y)
                 })
+                likeImageView.alpha = 0
+                // カードの中身を変更するための処理
+                selectedCardCount += 1
                 // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
                 return
             }
