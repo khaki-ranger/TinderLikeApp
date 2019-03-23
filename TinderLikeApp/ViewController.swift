@@ -24,6 +24,9 @@ class ViewController: UIViewController {
     var people = [UIView]()
     // ベースに関連づけるカードを制御するための変数
     var selectedCardCount: Int = 0
+    
+    let name = ["ほのか", "あかね", "みほ", "カルロス"]
+    var likedName = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +92,10 @@ class ViewController: UIViewController {
                 likeImageView.alpha = 0
                 // カードの中身を変更するための処理
                 selectedCardCount += 1
+                // 最後のカードがスワイプされた時の処理
+                if selectedCardCount >= people.count {
+                    print(likedName)
+                }
                 // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
                 return
             // 右に大きくスワイプした場合の処理
@@ -100,8 +107,13 @@ class ViewController: UIViewController {
                     self.people[self.selectedCardCount].center = CGPoint(x: self.people[self.selectedCardCount].center.x + 250, y: self.people[self.selectedCardCount].center.y)
                 })
                 likeImageView.alpha = 0
+                likedName.append(name[selectedCardCount])
                 // カードの中身を変更するための処理
                 selectedCardCount += 1
+                // 最後のカードがスワイプされた時の処理
+                if selectedCardCount >= people.count {
+                    print(likedName)
+                }
                 // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
                 return
             }
