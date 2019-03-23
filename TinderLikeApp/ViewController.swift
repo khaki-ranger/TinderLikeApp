@@ -94,7 +94,7 @@ class ViewController: UIViewController {
                 selectedCardCount += 1
                 // 最後のカードがスワイプされた時の処理
                 if selectedCardCount >= people.count {
-                    print(likedName)
+                    performSegue(withIdentifier: "PushList", sender: self)
                 }
                 // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
                 return
@@ -112,7 +112,7 @@ class ViewController: UIViewController {
                 selectedCardCount += 1
                 // 最後のカードがスワイプされた時の処理
                 if selectedCardCount >= people.count {
-                    print(likedName)
+                    performSegue(withIdentifier: "PushList", sender: self)
                 }
                 // カードの位置を初期値に戻す処理が発動しないように関数を抜ける
                 return

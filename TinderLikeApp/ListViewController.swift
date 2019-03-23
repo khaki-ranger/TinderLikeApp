@@ -9,6 +9,8 @@
 import UIKit
 
 class ListViewController: UIViewController {
+    
+    var likedName = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
