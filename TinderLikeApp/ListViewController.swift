@@ -8,14 +8,16 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UITableViewDataSource {
     
     var likedName = [String]()
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(likedName)
+        tableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +25,15 @@ class ListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return likedName.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = likedName[indexPath.row]
+        return cell
+    }
 
     /*
     // MARK: - Navigation
