@@ -43,6 +43,35 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func likebuttonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.resetCard()
+            self.people[self.selectedCardCount].center = CGPoint(x: self.people[self.selectedCardCount].center.x + 500, y: self.people[self.selectedCardCount].center.y)
+        })
+        likeImageView.alpha = 0
+        likedName.append(name[selectedCardCount])
+        // カードの中身を変更するための処理
+        selectedCardCount += 1
+        // 最後のカードがスワイプされた時の処理
+        if selectedCardCount >= people.count {
+            performSegue(withIdentifier: "PushList", sender: self)
+        }
+    }
+    
+    @IBAction func dislikebuttonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.resetCard()
+            self.people[self.selectedCardCount].center = CGPoint(x: self.people[self.selectedCardCount].center.x - 500, y: self.people[self.selectedCardCount].center.y)
+        })
+        likeImageView.alpha = 0
+        // カードの中身を変更するための処理
+        selectedCardCount += 1
+        // 最後のカードがスワイプされた時の処理
+        if selectedCardCount >= people.count {
+            performSegue(withIdentifier: "PushList", sender: self)
+        }
+    }
+    
     func resetCard() {
         // 位置を戻す
         basicCard.center = self.centerOfCard
