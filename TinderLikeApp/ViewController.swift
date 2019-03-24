@@ -49,6 +49,15 @@ class ViewController: UIViewController {
         // 角度を戻す
         basicCard.transform = .identity
     }
+    
+    // セグエを実装する前にする処理
+    // Likeに選択したカードの配列を渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PushList" {
+            let vc = segue.destination as! ListViewController
+            vc.likedName = likedName
+        }
+    }
 
     // MARK: methods
     @IBAction func swipeCard(_ sender: UIPanGestureRecognizer) {
